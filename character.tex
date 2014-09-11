@@ -1,0 +1,122 @@
+% === hier anpassen
+% == Charakterinformationen
+% Name des Charakters
+\newcommand\charaktername{}
+% Name des Spielers
+\newcommand\spielername{}
+% Beruf
+\newcommand\beruf{}
+% Geisteskrankheiten
+\newcommand\geisteskrankheiten{}
+% Geburtsort
+\newcommand\geburtsort{}
+% Geschlecht
+\newcommand\geschlecht{}
+% Alter
+\newcommand\alter{}
+% == Attribute
+% Stärke
+\newcommand\attrSt{}
+% Geschicklichkeit
+\newcommand\attrGe{}
+% Intelligenz
+\newcommand\attrIn{}
+% Idee
+\newcommand\attrIdee{}
+% Konstitution
+\newcommand\attrKo{}
+% Erscheinung
+\newcommand\attrEr{}
+% Mana
+\newcommand\attrMa{}
+% Glück
+\newcommand\attrGlueck{}
+% Größe
+\newcommand\attrGr{}
+% geistige Stabilität
+\newcommand\attrGs{}
+% Bildung
+\newcommand\attrBi{}
+% Wissen
+\newcommand\attrWissen{}
+% == Fertigkeiten
+\newcommand\allskills{
+    % \skill{<NAME>}{<WERT (optional)>}
+    \skill{Ansehen (15\%)}{}
+    \skill{Anthropologie (01\%)}{}
+    \skill{Archäologie (01\%)}{}
+    \skill{Astronomie (01\%)}{}
+    \skill{Ausweichen (GE x 2\%)}{}
+    \skill{Bibliotheksnutzung (25\%)}{}
+    \skill{Biologie (01\%)}{}
+    \skill{Buchführung (10\%)}{}
+    \skill{Chemie (01\%)}{}
+    \skill{Cthulhu-Mythos (00\%)}{}
+    \skill{Elektrische Reparaturen (10\%)}{}
+    \skill{Erste Hilfe (30\%)}{}
+    \skill{Fahren (20\%)}{}
+    \skill{Feilschen (05\%)}{}
+    \skill{Fotografie (10\%)}{}
+    \skill{Fremdsprache (01\%)}{}
+    \skill{Geologie (01\%)}{}
+    \skill{Geschichtskenntnisse (20\%)}{}
+    \skill{Gesetzeskenntnisse (05\%)}{}
+    \skill{Handwerk (05\%)}{}
+    \skill{Horchen (25\%)}{}
+    \skill{Kampfsportart (01\%)}{}
+    \skill{Klettern (ST+GE \%)}{}
+    \skill{Kunst (05\%)}{}
+    \skill{Mechanische}{}
+    \skill{Reparaturen (20\%)}{}
+    \skill{Medizin (05\%)}{}
+    \skill{Muttersprache (BI x 05\%)}{}
+    \skill{Naturkunde (10\%)}{}
+    \skill{Okkultismus (05\%)}{}
+    \skill{Orientierung (10\%)}{}
+    \skill{Pharmazie (01\%)}{}
+    \skill{Physik (01\%)}{}
+    \skill{Pilot (01\%)}{}
+    \skill{Psychoanalyse (01\%)}{}
+    \skill{Psychologie (05\%)}{}
+    \skill{Reiten (05\%)}{}
+    \skill{Schleichen (10\%)}{}
+    \skill{Schlosserarbeiten (01\%)}{}
+    \skill{Schweres Gerät (01\%)}{}
+    \skill{Schwimmen (25\%)}{}
+    \skill{Springen (25\%)}{}
+    \skill{Spurensuche (10\%)}{}
+    \skill{Tarnen (15\%)}{}
+    \skill{Überreden (05\%)}{}
+    \skill{Überzeugen (15\%)}{}
+    \skill{Verbergen (10\%)}{}
+    \skill{Verborgenes erkennen (25\%)}{}
+    \skill{Verkleiden (01\%)}{}
+    \skill{Werfen (25\%)}{}
+    \skill{Schusswaffen}{}
+    \skill{Faustfeuerwaffe (20\%)}{}
+    \skill{Gewehr (25\%)}{}
+    \skill{Maschinengewehr (15\%)}{}
+    \skill{Maschinenpistole (15\%)}{}
+    \skill{Schrotflinte (30\%)}{}
+}
+% Anzahl an leeren Fertigkeiten Feldern
+\newcommand\blankskills{9}
+% === Waffen
+% == Nahkampf
+\newcommand\allmeleeweapons {
+    % \meleeweapon{<WAFFE>}{<%>}{<Schaden>}{<Hände>}{<Rw>}{<#Angriffe>}{<TP>}
+    % alle Parameter sind optional
+    \meleeweapon{Faustschlag (50\%)}{}{1W3+Sb}{1}{Berührung}{1}{}
+    \meleeweapon{Kopfstoß (10\%)}{}{1W4+Sb}{2}{Berührung}{1}{}
+    \meleeweapon{Fußtritt (25\%)}{}{1W6+Sb}{0}{Berührung}{1}{}
+    \meleeweapon{Ringe (25\%)}{}{spezial}{2}{Berührung}{1}{}
+}
+% Anzahl an leeren Nahkampf Feldern
+\newcommand\blankmeleeweapons{6}
+% == Fernkampf
+\newcommand\alllongrangeweapons {
+    % \longrangeweapon{<WAFFE>}{<%>}{<Schaden>}{<Fehlf.>}{<Rw>}{<#Angriffe>}{<SCHUSS>}{<TP>}
+    % alle Parameter sind optional
+}
+% Anzahl an leeren Fernkampf Feldern
+\newcommand\blanklongrangeweaponsweapons{10}

@@ -1,0 +1,430 @@
+\documentclass[a4paper,twoside]{article}
+
+\usepackage{calc}
+\usepackage{amsmath}
+\usepackage{grid-system}
+\usepackage[utf8]{inputenc}
+\usepackage{xstring}
+\usepackage{xparse}
+\usepackage[nomessages]{fp}
+\usepackage[a4paper, margin=1cm]{geometry}
+\usepackage{array}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{multicol}
+\usepackage{pifont}
+\usepackage{subfiles}
+
+\input{character}
+
+\FPeval{\blankmeleeweaponsCal}{round(\blankmeleeweapons+1,0)}
+\FPeval{\blanklongrangeweaponsweaponsCal}{round(\blanklongrangeweaponsweapons+1,0)}
+\FPeval{\blankskillsCal}{round(\blankskills+1,0)}
+
+% ==== commands
+\newlength{\remaining}
+\newcommand\underlinedtexttitle[3]{
+    $\underset{
+        \text{#1}
+    }{
+        \setlength{\remaining}{#3-\widthof{#2}}
+        \text{\underline{#2\hspace*{\remaining}}}
+    }$
+}
+\newcommand\underlinedtext[2]{
+    \setlength{\remaining}{#2-\widthof{#1}}
+    \text{\underline{#1\hspace*{\remaining}}}
+}
+\newcommand\skill[2]{
+    \noindent
+    \ding{111}
+    \ifx&#1&%
+        \text{\underline{\hspace*{5cm}}}%
+    \else
+        \normalsize{#1}\dotfill%
+    \fi
+    \underlinedtext{#2}{0.5cm}
+    \newline
+}
+\newcommand\meleeweapon[7]{
+    \ding{111}
+    \ifx\hfuzz#1\hfuzz
+        \text{\underline{\hspace*{2.5cm}}}%
+    \else
+        \footnotesize{#1}\dotfill%
+    \fi &
+    \ifx\hfuzz#2\hfuzz
+        \text{\underline{\hspace*{0.4cm}}}%
+    \else
+        \footnotesize{#2}%
+    \fi &
+    \ifx\hfuzz#3\hfuzz
+        \text{\underline{\hspace*{1.4cm}}}%
+    \else
+        \footnotesize{#3}%
+    \fi &
+    \ifx\hfuzz#4\hfuzz
+        \text{\underline{\hspace*{0.5cm}}}%
+    \else
+        \footnotesize{#4}%
+    \fi &
+    \ifx\hfuzz#5\hfuzz
+        \text{\underline{\hspace*{1.4cm}}}%
+    \else
+        \footnotesize{#5}%
+    \fi &
+    \ifx\hfuzz#6\hfuzz
+        \text{\underline{\hspace*{0.4cm}}}%
+    \else
+        \footnotesize{#6}%
+    \fi &
+    \ifx\hfuzz#7\hfuzz
+        \text{\underline{\hspace*{0.5cm}}}%
+    \else
+        \footnotesize{#7}%
+    \fi
+    \\
+}
+\newcommand\longrangeweapon[8]{
+    \ding{111}
+    \ifx\hfuzz#1\hfuzz
+        \text{\underline{\hspace*{1.15cm}}}%
+    \else
+        \footnotesize{#1}\dotfill%
+    \fi &
+    \ifx\hfuzz#2\hfuzz
+        \text{\underline{\hspace*{0.4cm}}}%
+    \else
+        \footnotesize{#2}%
+    \fi &
+    \ifx\hfuzz#3\hfuzz
+        \text{\underline{\hspace*{1.4cm}}}%
+    \else
+        \footnotesize{#3}%
+    \fi &
+    \ifx\hfuzz#4\hfuzz
+        \text{\underline{\hspace*{0.5cm}}}%
+    \else
+        \footnotesize{#4}%
+    \fi &
+    \ifx\hfuzz#5\hfuzz
+        \text{\underline{\hspace*{1.4cm}}}%
+    \else
+        \footnotesize{#5}%
+    \fi &
+    \ifx\hfuzz#6\hfuzz
+        \text{\underline{\hspace*{0.4cm}}}%
+    \else
+        \footnotesize{#6}%
+    \fi &
+    \ifx\hfuzz#7\hfuzz
+        \text{\underline{\hspace*{0.5cm}}}%
+    \else
+        \footnotesize{#7}%
+    \fi &
+    \ifx\hfuzz#8\hfuzz
+        \text{\underline{\hspace*{0.5cm}}}%
+    \else
+        \footnotesize{#8}%
+    \fi
+    \\
+}
+
+\begin{document}
+\section*{Pirate Cthulhu Charakterbogen \hfill}
+
+\begin{Row}%
+\begin{Cell}{1}
+    % Charakterinformationen
+    \subsection*{Charakterinformationen}
+    \begin{tabular}{ l l l l l l }
+        \multicolumn{6}{l}{\underlinedtexttitle{Name des Charakters}{\charaktername}{250pt}} \\
+        \multicolumn{6}{l}{\underlinedtexttitle{Name des Spielers}{\spielername}{250pt}} \\
+        \multicolumn{6}{l}{\underlinedtexttitle{Beruf}{\beruf}{250pt}} \\
+        \multicolumn{6}{l}{\underlinedtexttitle{Geisteskrankheiten}{\geisteskrankheiten}{250pt}} \\
+        \multicolumn{6}{l}{\underlinedtexttitle{Geburtsort}{\geburtsort}{250pt}} \\
+        \multicolumn{4}{l}{
+            \underlinedtexttitle{Geschlecht}{\geschlecht}{200pt}
+        } & \multicolumn{2}{l}{
+            \underlinedtexttitle{Alter}{\alter}{34pt}
+        } \\
+    \end{tabular}
+\end{Cell}
+\begin{Cell}{1}
+    % Attribute und Rettungswürfe
+    \subsection*{Attribute und Rettungswürfe}
+    \begin{tabular}{ l@{}l l@{}l l@{}l l@{}l }
+        ST & \underlinedtext{\attrSt}{14pt} &
+        GE & \underlinedtext{\attrGe}{14pt} &
+        IN & \underlinedtext{\attrIn}{14pt} &
+        Idee & \underlinedtext{\attrIdee}{14pt} \\
+        KO & \underlinedtext{\attrKo}{14pt} &
+        ER & \underlinedtext{\attrEr}{14pt} &
+        MA & \underlinedtext{\attrMa}{14pt} &
+        Glück & \underlinedtext{\attrGlueck}{14pt} \\
+        GR & \underlinedtext{\attrGr}{14pt} &
+        gS & \underlinedtext{\attrGs}{14pt} &
+        BI & \underlinedtext{\attrBi}{14pt} &
+        Wissen & \underlinedtext{\attrWissen}{14pt} \\
+    \end{tabular}
+    \begin{tabular} { l l l l }
+        % TODO: Variablen
+        Maximalstabilität &  & Schadenbonus &  \\
+    \end{tabular}
+\end{Cell}
+\end{Row}
+
+\begin{Row}
+    \begin{Cell}{2}
+        % Stabilitätspunkte
+        \subsection*{Stabilitätspunkte}
+        \begin{tabular}{ | m{2.5mm} m{2.5mm} m{2.5mm} m{2.5mm} m{2.5mm} m{2.5mm} m{2.5mm} m{2.5mm} m{2.5mm} m{2.5mm} m{2.5mm} m{2.5mm} m{4mm} | }
+            \hline
+            \multicolumn{4}{|l}{\footnotesize{0 \tiny{(endgül. Wahnsinn)}}} &
+            \footnotesize{1\textsuperscript{1}} &
+            \footnotesize{2\textsuperscript{1}} &
+            \footnotesize{3\textsuperscript{1}} &
+            \footnotesize{4\textsuperscript{1}} &
+            \footnotesize{5\textsuperscript{1}} &
+            \footnotesize{6\textsuperscript{2}} &
+            \footnotesize{7\textsuperscript{2}} &
+            \footnotesize{8\textsuperscript{2}} &
+            \footnotesize{9\textsuperscript{2}} \\
+            \footnotesize{10\textsuperscript{2}} &
+            \footnotesize{11\textsuperscript{3}} &
+            \footnotesize{12\textsuperscript{3}} &
+            \footnotesize{13\textsuperscript{3}} &
+            \footnotesize{14\textsuperscript{3}} &
+            \footnotesize{15\textsuperscript{3}} &
+            \footnotesize{16\textsuperscript{4}} &
+            \footnotesize{17\textsuperscript{4}} &
+            \footnotesize{18\textsuperscript{4}} &
+            \footnotesize{19\textsuperscript{4}} &
+            \footnotesize{20\textsuperscript{4}} &
+            \footnotesize{21\textsuperscript{5}} &
+            \footnotesize{22\textsuperscript{5}} \\
+            \footnotesize{23\textsuperscript{5}} &
+            \footnotesize{24\textsuperscript{5}} &
+            \footnotesize{25\textsuperscript{5}} &
+            \footnotesize{26\textsuperscript{6}} &
+            \footnotesize{27\textsuperscript{6}} &
+            \footnotesize{28\textsuperscript{6}} &
+            \footnotesize{29\textsuperscript{6}} &
+            \footnotesize{30\textsuperscript{6}} &
+            \footnotesize{31\textsuperscript{7}} &
+            \footnotesize{32\textsuperscript{7}} &
+            \footnotesize{33\textsuperscript{7}} &
+            \footnotesize{34\textsuperscript{7}} &
+            \footnotesize{35\textsuperscript{7}} \\
+            \footnotesize{36\textsuperscript{8}} &
+            \footnotesize{37\textsuperscript{8}} &
+            \footnotesize{38\textsuperscript{8}} &
+            \footnotesize{39\textsuperscript{8}} &
+            \footnotesize{40\textsuperscript{8}} &
+            \footnotesize{41\textsuperscript{9}} &
+            \footnotesize{42\textsuperscript{9}} &
+            \footnotesize{43\textsuperscript{9}} &
+            \footnotesize{44\textsuperscript{9}} &
+            \footnotesize{45\textsuperscript{9}} &
+            \footnotesize{46\textsuperscript{10}} &
+            \footnotesize{47\textsuperscript{10}} &
+            \footnotesize{48\textsuperscript{10}} \\
+            \footnotesize{49\textsuperscript{10}} &
+            \footnotesize{50\textsuperscript{10}} &
+            \footnotesize{51\textsuperscript{11}} &
+            \footnotesize{52\textsuperscript{11}} &
+            \footnotesize{53\textsuperscript{11}} &
+            \footnotesize{54\textsuperscript{11}} &
+            \footnotesize{55\textsuperscript{11}} &
+            \footnotesize{56\textsuperscript{12}} &
+            \footnotesize{57\textsuperscript{12}} &
+            \footnotesize{58\textsuperscript{12}} &
+            \footnotesize{59\textsuperscript{12}} &
+            \footnotesize{60\textsuperscript{12}} &
+            \footnotesize{61\textsuperscript{13}} \\
+            \footnotesize{62\textsuperscript{13}} &
+            \footnotesize{63\textsuperscript{13}} &
+            \footnotesize{64\textsuperscript{13}} &
+            \footnotesize{65\textsuperscript{13}} &
+            \footnotesize{66\textsuperscript{14}} &
+            \footnotesize{67\textsuperscript{14}} &
+            \footnotesize{68\textsuperscript{14}} &
+            \footnotesize{69\textsuperscript{14}} &
+            \footnotesize{70\textsuperscript{14}} &
+            \footnotesize{71\textsuperscript{15}} &
+            \footnotesize{72\textsuperscript{15}} &
+            \footnotesize{73\textsuperscript{15}} &
+            \footnotesize{74\textsuperscript{15}} \\
+            \footnotesize{75\textsuperscript{15}} &
+            \footnotesize{76\textsuperscript{16}} &
+            \footnotesize{77\textsuperscript{16}} &
+            \footnotesize{78\textsuperscript{16}} &
+            \footnotesize{79\textsuperscript{16}} &
+            \footnotesize{80\textsuperscript{16}} &
+            \footnotesize{81\textsuperscript{17}} &
+            \footnotesize{82\textsuperscript{17}} &
+            \footnotesize{83\textsuperscript{17}} &
+            \footnotesize{84\textsuperscript{17}} &
+            \footnotesize{85\textsuperscript{17}} &
+            \footnotesize{86\textsuperscript{18}} &
+            \footnotesize{87\textsuperscript{18}} \\
+            \footnotesize{88\textsuperscript{18}} &
+            \footnotesize{89\textsuperscript{18}} &
+            \footnotesize{90\textsuperscript{18}} &
+            \footnotesize{91\textsuperscript{19}} &
+            \footnotesize{92\textsuperscript{19}} &
+            \footnotesize{93\textsuperscript{19}} &
+            \footnotesize{94\textsuperscript{19}} &
+            \footnotesize{95\textsuperscript{19}} &
+            \footnotesize{96\textsuperscript{20}} &
+            \footnotesize{97\textsuperscript{20}} &
+            \footnotesize{98\textsuperscript{20}} &
+            \footnotesize{99\textsuperscript{20}} &
+            \footnotesize{00\textsuperscript{20}} \\
+            \hline
+        \end{tabular}
+    \end{Cell}
+    \begin{Cell}{1}
+        % Magiepunkte
+        \subsection*{Magiepunkte}
+        \begin{tabular}{ | m{2.5mm} m{2.5mm} m{2.5mm} m{2.5mm} m{2.5mm} m{2.5mm} | }
+            \hline
+            \multicolumn{3}{|l}{\small{0 \tiny{(bewusstlos)}}} &
+            \small{1} &
+            \small{2} &
+            \small{3} \\
+            \small{4} &
+            \small{5} &
+            \small{6} &
+            \small{7} &
+            \small{8} &
+            \small{9} \\
+            \small{10} &
+            \small{11} &
+            \small{12} &
+            \small{13} &
+            \small{14} &
+            \small{15} \\
+            \small{16} &
+            \small{17} &
+            \small{18} &
+            \small{19} &
+            \small{20} &
+            \small{21} \\
+            \small{22} &
+            \small{23} &
+            \small{24} &
+            \small{25} &
+            \small{26} &
+            \small{27} \\
+            \small{28} &
+            \small{29} &
+            \small{30} &
+            \small{31} &
+            \small{32} &
+            \small{33} \\
+            \small{34} &
+            \small{35} &
+            \small{36} &
+            \small{37} &
+            \small{38} &
+            \small{39} \\
+            \small{40} &
+            \small{41} &
+            \small{42} &
+            \small{43} &
+            \small{44} &
+            \small{45} \\
+            \hline
+        \end{tabular}
+    \end{Cell}
+    \begin{Cell}{1}
+        % Trefferpunkte
+        \subsection*{Trefferpunkte}
+        \begin{tabular}{ | m{2.5mm} m{2.5mm} m{2.5mm} m{2.5mm} m{2.5mm} m{2.5mm} | }
+            \hline
+            & \multicolumn{3}{l}{\colorbox{Gray}{\small{bewusstlos}}} & & \\
+            \footnotesize{Tot} &
+            \colorbox{Gray}{\footnotesize{-2}} &
+            \colorbox{Gray}{\footnotesize{-1}} &
+            \colorbox{Gray}{\footnotesize{0}} &
+            \footnotesize{1} &
+            \footnotesize{2} \\
+            \footnotesize{3} &
+            \footnotesize{4} &
+            \footnotesize{5} &
+            \footnotesize{6} &
+            \footnotesize{7} &
+            \footnotesize{8} \\
+            \footnotesize{9} &
+            \footnotesize{10} &
+            \footnotesize{11} &
+            \footnotesize{12} &
+            \footnotesize{13} &
+            \footnotesize{14} \\
+            \footnotesize{15} &
+            \footnotesize{16} &
+            \footnotesize{17} &
+            \footnotesize{18} &
+            & \\
+            \hline
+        \end{tabular}
+    \end{Cell}
+\end{Row}
+
+% Fertigkeiten
+\subsection*{Fertigkeiten}
+\begin{multicols}{3}
+\allskills
+\newcounter{i}
+\forloop{i}{1}{\value{i} < \blankskillsCal}%
+{%
+	\skill{}{}
+}
+\end{multicols}
+
+\begin{Row}%
+\begin{Cell}{1}
+    % Nahkampfwaffen
+    \subsection*{Nahkampf}
+    \noindent\begin{tabular}{ m{2.85cm} m{0.2cm} m{1.1cm} m{0.55cm} m{1.1cm} m{0.6cm} m{0.4cm} }
+        \footnotesize{\textit{Nahkampf}} &
+        \footnotesize{\textit{\%}} &
+        \footnotesize{\textit{Schaden}} &
+        \footnotesize{\textit{Hände}} &
+        \footnotesize{\textit{Reichweite}} &
+        \tiny{\textit{\#Angriffe}} &
+        \footnotesize{\textit{TP}} \\
+        \newcounter{iMeleeWeapon}
+        \allmeleeweapons
+        \forloop{iMeleeWeapon}{1}{\value{iMeleeWeapon} < \blankmeleeweaponsCal}%
+        {%
+            \meleeweapon{}{}{}{}{}{}{}
+        }
+        %\hline
+    \end{tabular}
+\end{Cell}
+\begin{Cell}{1}
+    % Schusswaffen
+    \subsection*{Fernkampf}
+    \noindent\begin{tabular}{ m{1.5cm} m{0.2cm} m{1.1cm} m{0.55cm} m{1.1cm} m{0.6cm} m{0.5cm} m{0.5cm} }
+        \footnotesize{\textit{Waffe}} &
+        \footnotesize{\textit{\%}} &
+        \footnotesize{\textit{Schaden}} &
+        \footnotesize{\textit{Fehlf.}} &
+        \footnotesize{\textit{Reichweite}} &
+        \tiny{\textit{\#Angriffe}} &
+        \footnotesize{\textit{Schuss}} &
+        \footnotesize{\textit{TP}} \\
+        \newcounter{iLongRangeWeapon}
+        \alllongrangeweapons
+        \forloop{iLongRangeWeapon}{1}{\value{iLongRangeWeapon} < \blanklongrangeweaponsweaponsCal}%
+        {%
+            \longrangeweapon{}{}{}{}{}{}{}{}
+        }
+    \end{tabular}
+\end{Cell}
+\end{Row}
+
+\newpage
+
+\end{document}
