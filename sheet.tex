@@ -428,4 +428,97 @@
 
 \newpage
 
+% Persönliche Daten
+\subsection*{Persönliche Daten}
+\begin{Row}%
+\begin{Cell}{1}
+    %\subsection*{Charakterinformationen}
+    \begin{tabular}{ l }
+        \underlinedtexttitle{Wohnort}{}{250pt} \\
+        \underlinedtexttitle{}{}{250pt} \\
+        \underlinedtexttitle{Beschreibung}{}{250pt} \\
+        \underlinedtexttitle{}{}{250pt} \\
+        \underlinedtexttitle{}{}{250pt} \\
+        \underlinedtexttitle{}{}{250pt} \\
+        \underlinedtexttitle{Familien und Freunde}{}{250pt} \\
+    \end{tabular}
+\end{Cell}
+\begin{Cell}{1}
+    \begin{tabular}{ l }
+        \underlinedtexttitle{}{}{250pt} \\
+        \underlinedtexttitle{}{}{250pt} \\
+        \underlinedtexttitle{Temporärer Wahnsinn}{}{250pt} \\
+        \underlinedtexttitle{}{}{250pt} \\
+        \underlinedtexttitle{Verletzungen}{}{250pt} \\
+        \underlinedtexttitle{}{}{250pt} \\
+        \underlinedtexttitle{Narben}{}{250pt} \\
+    \end{tabular}
+\end{Cell}
+\end{Row}
+
+% Geschichte
+\subsection*{Geschichte}
+\begin{tabular}{ l }
+    \newcounter{iStory}
+    \forloop{iStory}{1}{\value{iStory} < 11}%
+    {%
+        \underlinedtexttitle{}{}{525pt} \\
+    }
+\end{tabular}
+
+\begin{Row}%
+\begin{Cell}{1}
+    % Einkommen und Ersparnisse
+    \subsection*{Einkommen und Ersparnisse}
+    \begin{tabular}{ l }
+        \underlinedtexttitle{Einkommen}{}{250pt} \\
+        \underlinedtexttitle{Bargeld}{}{250pt} \\
+        \underlinedtexttitle{Ersparnisse}{}{250pt} \\
+        \underlinedtexttitle{}{}{250pt} \\
+        \underlinedtexttitle{}{}{250pt} \\
+        \underlinedtexttitle{Eigentum}{}{250pt} \\
+        \underlinedtexttitle{}{}{250pt} \\
+        \underlinedtexttitle{}{}{250pt} \\
+        \underlinedtexttitle{Immobilien}{}{250pt} \\
+    \end{tabular}
+    % Gelesene Mythos-Werke
+    \subsection*{Gelesene Mythos-Werke}
+    \begin{tabular}{ l }
+        \newcounter{iMythos}
+        \forloop{iMythos}{1}{\value{iMythos} < 6}%
+        {%
+            \underlinedtexttitle{}{}{250pt} \\
+        }
+    \end{tabular}
+    % Magische Artefakte/bekannte Zauber
+    \subsection*{Magische Artefakte/bekannte Zauber}
+    \begin{tabular}{ l }
+        \underlinedtexttitle{}{}{250pt} \\
+        \underlinedtexttitle{Artefakte}{}{250pt} \\
+        \underlinedtexttitle{}{}{250pt} \\
+        \underlinedtexttitle{Zauber}{}{250pt} \\
+    \end{tabular}
+\end{Cell}
+\begin{Cell}{1}
+    % Abenteuerausrüstung und Besitz
+    \subsection*{Abenteuerausrüstung und Besitz}
+    \begin{tabular}{ l }
+        \newcounter{iEquip}
+        \forloop{iEquip}{1}{\value{iEquip} < 10}%
+        {%
+            \underlinedtexttitle{}{}{250pt} \\
+        }
+    \end{tabular}
+    % Begegnungen mit Wesen des Mythos
+    \subsection*{Begegnungen mit Wesen des Mythos}
+    \begin{tabular}{ l }
+        \newcounter{iMythosEnc}
+        \forloop{iMythosEnc}{1}{\value{iMythosEnc} < 12}%
+        {%
+            \underlinedtexttitle{}{}{250pt} \\
+        }
+    \end{tabular}
+\end{Cell}
+\end{Row}
+
 \end{document}
