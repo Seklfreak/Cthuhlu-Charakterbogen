@@ -13,6 +13,11 @@
 \usepackage{multicol}
 \usepackage{pifont}
 \usepackage{subfiles}
+\usepackage{hyperref}
+
+\hypersetup{
+    pdfborder={0 0 0}
+}
 
 \input{character}
 
@@ -21,6 +26,11 @@
 \FPeval{\blankskillsCal}{round(\blankskills+1,0)}
 
 % ==== commands
+\newcommand\source{
+    \vspace*{\fill}
+    \href{https://github.com/Seklfreak/Cthuhlu-Charakterbogen}{https://github.com/Seklfreak/Cthuhlu-Charakterbogen}
+    \clearpage
+}
 \newlength{\remaining}
 \newcommand\underlinedtexttitle[3]{
     $\underset{
@@ -426,6 +436,7 @@
 \end{Cell}
 \end{Row}
 
+\source
 \newpage
 
 % Persönliche Daten
@@ -485,7 +496,7 @@
     \subsection*{Gelesene Mythos-Werke}
     \begin{tabular}{ l }
         \newcounter{iMythos}
-        \forloop{iMythos}{1}{\value{iMythos} < 6}%
+        \forloop{iMythos}{1}{\value{iMythos} < 5}%
         {%
             \underlinedtexttitle{}{}{250pt} \\
         }
@@ -513,12 +524,14 @@
     \subsection*{Begegnungen mit Wesen des Mythos}
     \begin{tabular}{ l }
         \newcounter{iMythosEnc}
-        \forloop{iMythosEnc}{1}{\value{iMythosEnc} < 12}%
+        \forloop{iMythosEnc}{1}{\value{iMythosEnc} < 11}%
         {%
             \underlinedtexttitle{}{}{250pt} \\
         }
     \end{tabular}
 \end{Cell}
 \end{Row}
+
+\source
 
 \end{document}
